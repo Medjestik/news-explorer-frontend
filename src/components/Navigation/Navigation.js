@@ -42,6 +42,7 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                     <li className="nav__item">
                         <button 
                         className={`nav__btn ${pathname === "/" ? "nav__btn_type_white" : ""} ${windowWidth < 600 ? "nav__btn_type_mobile" : ""}`}
+                        type="button"
                         onClick={onLogout}>
                         Грета&nbsp;
                         <img className="logout-icon" src={`${pathname === "/" ? logoutWhite : logout}`} alt="Выход" />
@@ -50,7 +51,15 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                 </>
                 :
                 <li className="nav__item">
-                    <button className={`nav__btn ${pathname === "/" ? "nav__btn_type_white" : ""} ${windowWidth < 600 ? "nav__btn_type_mobile" : ""}`} onClick={onLogin}>Авторизоваться</button>
+                    <button 
+                    className={`nav__btn ${pathname === "/" ? "nav__btn_type_white" : ""} ${windowWidth < 600 ? "nav__btn_type_mobile" : ""}`}
+                    type="button" 
+                    onClick={() =>{
+                        setShowMenu(false); 
+                        onLogin();} 
+                    }>
+                        Авторизоваться
+                    </button>
                 </li>
             }
         </>
