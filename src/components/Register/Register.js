@@ -109,7 +109,7 @@ function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
             minLength="2"
             required
             />
-            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`} id="email-error">
+            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`}>
                 {errorEmail.errorText}
             </span>
         </label>
@@ -126,7 +126,7 @@ function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
             minLength="6"
             required
             />
-            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`} id="password-error">
+            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`}>
                 {errorPassword.errorText}
             </span>
         </label>
@@ -145,7 +145,7 @@ function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
             required
             pattern="[A-Za-zА-Яа-яЁё -]{1,}"
             />
-            <span className={`popup__input-error ${errorName.error ? "popup__input-error_active" : ""}`} id="name-error">
+            <span className={`popup__input-error ${errorName.error ? "popup__input-error_active" : ""}`}>
                 {errorName.errorText}
             </span>
         </label>

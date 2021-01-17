@@ -81,7 +81,7 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                 ? <button className={`nav-mobile__button nav-mobile__button_menu_hide ${pathname === "/saved-news" ? "nav-mobile__button_type_black" : ""}`} type="button" onClick={() => setShowMenu(false)} />
                 : <button className={`nav-mobile__button nav-mobile__button_menu_show ${pathname === "/saved-news" ? "nav-mobile__button_type_black" : ""}`} type="button" onClick={() => setShowMenu(true)} />
                 }         
-                <div className={`nav-mobile__container nav-mobile__container_type_${showMenu ? 'show' : 'hide'} ${pathname === "/saved-news" ? "nav-mobile__container_type_white" : ""}`}>{navMenu}</div>
+                <ul className={`nav-mobile__container nav-mobile__container_type_${showMenu ? 'show' : 'hide'} ${pathname === "/saved-news" ? "nav-mobile__container_type_white" : ""}`}>{navMenu}</ul>
                 </>
             ) 
         }
