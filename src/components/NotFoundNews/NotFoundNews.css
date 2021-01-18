@@ -1,0 +1,36 @@
+.not-found-news {
+	margin: 0;
+	min-height: 374px;
+    background-color: #F5F6F7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-news__img {
+	width:  96px;
+	height: 96px;
+    margin-bottom: 40px;
+}
+.not-found-news__caption {
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    color: #1A1B22;
+    margin-bottom: 16px;
+}
+.not-found-news__text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #B6BCBF;
+    max-width: 300px;
+    margin: 0px;
+}

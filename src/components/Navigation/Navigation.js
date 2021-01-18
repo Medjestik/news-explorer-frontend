@@ -42,7 +42,6 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                     <li className="nav__item">
                         <button 
                         className={`nav__btn ${pathname === "/" ? "nav__btn_type_white" : ""} ${windowWidth < 600 ? "nav__btn_type_mobile" : ""}`}
-                        type="button"
                         onClick={onLogout}>
                         Грета&nbsp;
                         <img className="logout-icon" src={`${pathname === "/" ? logoutWhite : logout}`} alt="Выход" />
@@ -51,15 +50,7 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                 </>
                 :
                 <li className="nav__item">
-                    <button 
-                    className={`nav__btn ${pathname === "/" ? "nav__btn_type_white" : ""} ${windowWidth < 600 ? "nav__btn_type_mobile" : ""}`}
-                    type="button" 
-                    onClick={() =>{
-                        setShowMenu(false); 
-                        onLogin();} 
-                    }>
-                        Авторизоваться
-                    </button>
+                    <button className={`nav__btn ${pathname === "/" ? "nav__btn_type_white" : ""} ${windowWidth < 600 ? "nav__btn_type_mobile" : ""}`} onClick={onLogin}>Авторизоваться</button>
                 </li>
             }
         </>
@@ -81,7 +72,7 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                 ? <button className={`nav-mobile__button nav-mobile__button_menu_hide ${pathname === "/saved-news" ? "nav-mobile__button_type_black" : ""}`} type="button" onClick={() => setShowMenu(false)} />
                 : <button className={`nav-mobile__button nav-mobile__button_menu_show ${pathname === "/saved-news" ? "nav-mobile__button_type_black" : ""}`} type="button" onClick={() => setShowMenu(true)} />
                 }         
-                <ul className={`nav-mobile__container nav-mobile__container_type_${showMenu ? 'show' : 'hide'} ${pathname === "/saved-news" ? "nav-mobile__container_type_white" : ""}`}>{navMenu}</ul>
+                <div className={`nav-mobile__container nav-mobile__container_type_${showMenu ? 'show' : 'hide'} ${pathname === "/saved-news" ? "nav-mobile__container_type_white" : ""}`}>{navMenu}</div>
                 </>
             ) 
         }

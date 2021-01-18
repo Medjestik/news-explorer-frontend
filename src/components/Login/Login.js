@@ -85,7 +85,7 @@ function Login({ isOpen, onClose, onChangePopup }) {
             minLength="2"
             required
             />
-            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`}>
+            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`} id="name-error">
                 {errorEmail.errorText}
             </span>
         </label>
@@ -102,7 +102,7 @@ function Login({ isOpen, onClose, onChangePopup }) {
             minLength="6"
             required
             />
-            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`}>
+            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`} id="job-error">
                 {errorPassword.errorText}
             </span>
         </label>
