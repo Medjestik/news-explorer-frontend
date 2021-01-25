@@ -9,6 +9,7 @@
     object-position: center;
     border-radius: 1000px;
     margin-right: 56px;
+    pointer-events: none;
 }
 .about__author-description {
     display: flex;

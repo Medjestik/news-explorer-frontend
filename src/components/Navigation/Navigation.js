@@ -3,9 +3,12 @@ import './Navigation.css';
 import { NavLink } from 'react-router-dom';
 import logoutWhite from '../../images/logout-white.png';
 import logout from '../../images/logout-black.png';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
 function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
 
+
+    const { name: userName } = React.useContext(CurrentUserContext);
     const [windowWidth, setWindowWidth] = React.useState(0);
     const [showMenu, setShowMenu] = React.useState(false);
 
@@ -43,7 +46,7 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                         <button 
                         className={`nav__btn ${pathname === "/" ? "nav__btn_type_white" : ""} ${windowWidth < 600 ? "nav__btn_type_mobile" : ""}`}
                         onClick={onLogout}>
-                        Грета&nbsp;
+                        {userName}&nbsp;
                         <img className="logout-icon" src={`${pathname === "/" ? logoutWhite : logout}`} alt="Выход" />
                         </button>
                     </li>
@@ -72,7 +75,7 @@ function Navigation({ loggedIn, pathname, onLogout, onLogin }) {
                 ? <button className={`nav-mobile__button nav-mobile__button_menu_hide ${pathname === "/saved-news" ? "nav-mobile__button_type_black" : ""}`} type="button" onClick={() => setShowMenu(false)} />
                 : <button className={`nav-mobile__button nav-mobile__button_menu_show ${pathname === "/saved-news" ? "nav-mobile__button_type_black" : ""}`} type="button" onClick={() => setShowMenu(true)} />
                 }         
-                <div className={`nav-mobile__container nav-mobile__container_type_${showMenu ? 'show' : 'hide'} ${pathname === "/saved-news" ? "nav-mobile__container_type_white" : ""}`}>{navMenu}</div>
+                <ul className={`nav-mobile__container nav-mobile__container_type_${showMenu ? 'show' : 'hide'} ${pathname === "/saved-news" ? "nav-mobile__container_type_white" : ""}`}>{navMenu}</ul>
                 </>
             ) 
         }

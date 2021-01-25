@@ -1,7 +1,5 @@
 .cards__container {
     margin: 0px auto;
-    padding: 0px;
-    list-style-type: none;
     display: grid;
     gap: 16px;
     grid-template-columns: repeat(auto-fit, 400px);
@@ -16,6 +14,11 @@
     height: 576px;
     border-radius: 10px;
     position: relative;
+    transition: transform .3s;
+}
+.card__item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px -7px rgba(0,0,0,.1), 0 4px 30px -9px rgba(0,0,0,.2);
 }
 .card__menu {
     width: calc(100% - 48px);
@@ -36,7 +39,6 @@
     background: #FFFFFF;
     box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
     border-radius: 10px;
-    font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -52,20 +54,10 @@
 .card__tooltip_font_small {
     font-size: 10px;
 }
-.card__btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: #FFFFFF;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
-}
 .card__tag {
     min-height: 40px;
     padding: 0px 12px;
     background: #FFFFFF;
-    font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -80,29 +72,52 @@
 .card__tag_type_hidden {
     display: none;
 }
-.card__save {
+.card__btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: #FFFFFF;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
     background-image: url('../../images/normal-news.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40%;
 }
-.card__save:hover {
-    background-image: url('../../images/hover-news.png');
-}
 .card__btn:hover + .card__tooltip {
     opacity: 1;
 }
-.card__save_type_saved {
-    background-image: url('../../images/marked-news.png');
+.card__btn_type_save:hover {
+    background-image: url('../../images/hover-news.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
 }
-.card__del {
+.card__btn_type_saved {
+    background-image: url('../../images/marked-news.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+}
+.card__btn_type_saved:hover {
+    opacity: .7;
+}
+.card__btn_type_remove {
     background-image: url('../../images/normal-trash.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 65%;
 }
-.card__del:hover{
+.card__btn_type_remove:hover{
     background-image: url('../../images/hover-trash.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 65%;
+}
+.card__link {
+    text-decoration: none;
+    cursor: pointer;
 }
 .card__img {
     margin: 0px;
@@ -122,7 +137,7 @@
 }
 .card__date {
     margin: 0px 0px 12px 0px;
-    font-family: Source Sans Pro;
+    font-family: Source Sans Pro, Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -132,17 +147,21 @@
 .card__title {
     margin: 0px 0px 14px 0px;
     padding-bottom: 2px;
-    font-family: Roboto Slab;
+    font-family: Roboto Slab, 'Times New Roman', Times, serif;
     font-style: normal;
     font-weight: normal;
     font-size: 26px;
     line-height: 30px;
     color: #1A1B22;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .card__text {
     margin: 0px 0px 8px 0px;
     padding-bottom: 2px;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -157,7 +176,7 @@
 }
 .card__source {
     margin: auto 0px 0px;
-    font-family: Roboto Slab;
+    font-family: Roboto Slab, 'Times New Roman', Times, serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -189,11 +208,6 @@
         padding-bottom: 2px;
         font-size: 22px;
         line-height: 24px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3; 
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
     .card__menu {
         width: calc(100% - 16px);

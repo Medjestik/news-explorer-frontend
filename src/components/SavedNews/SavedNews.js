@@ -3,13 +3,23 @@ import './SavedNews.css';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.js'
 import NewsCardList from '../NewsCardList/NewsCardList.js';
 
-function SavedNews({ pathname }) {
+function SavedNews({ loggedIn, pathname, savedNews, onRemove }) {
     return (
         <main className="saved-news">
-            <SavedNewsHeader />
-            <NewsCardList 
+            <SavedNewsHeader
+            savedNews={savedNews}
+             />
+            { 
+                (savedNews.length > 0)
+                &&
+                <NewsCardList
+                loggedIn={loggedIn}
                 pathname={pathname}
+                news={savedNews}
+                onRemove={onRemove}
             />
+            }
+            
         </main>
     )
 }
