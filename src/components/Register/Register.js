@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js'
 
-function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
+function Register({ isOpen, onClose, onRegister, isFormFieldsBlocked, onChangePopup, showErrorForm }) {
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -14,7 +14,7 @@ function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        onSubmit();
+        onRegister({ email, password, name });
     }
 
     function handleChangeEmail(e) {
@@ -108,8 +108,9 @@ function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
             placeholder="Введите почту" 
             minLength="2"
             required
+            disabled={isFormFieldsBlocked}
             />
-            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`} id="email-error">
+            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`}>
                 {errorEmail.errorText}
             </span>
         </label>
@@ -125,8 +126,9 @@ function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
             placeholder="Введите пароль"
             minLength="6"
             required
+            disabled={isFormFieldsBlocked}
             />
-            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`} id="password-error">
+            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`}>
                 {errorPassword.errorText}
             </span>
         </label>
@@ -144,12 +146,13 @@ function Register({ isOpen, onClose, onSubmit, onChangePopup }) {
             maxLength="30"
             required
             pattern="[A-Za-zА-Яа-яЁё -]{1,}"
+            disabled={isFormFieldsBlocked}
             />
-            <span className={`popup__input-error ${errorName.error ? "popup__input-error_active" : ""}`} id="name-error">
+            <span className={`popup__input-error ${errorName.error ? "popup__input-error_active" : ""}`}>
                 {errorName.errorText}
             </span>
         </label>
-        <span className="popup__form-error">Такой пользователь уже есть</span>
+        <span className={`popup__form-error ${showErrorForm.isShow ? "popup__form-error_active" : ""}`}>{showErrorForm.errText}</span>
         </PopupWithForm>
     )
 }

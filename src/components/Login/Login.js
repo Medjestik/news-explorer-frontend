@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js'
 
-function Login({ isOpen, onClose, onChangePopup }) {
+function Login({ isOpen, onClose, onLogin, isFormFieldsBlocked, showErrorForm, onChangePopup }) {
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -12,6 +12,7 @@ function Login({ isOpen, onClose, onChangePopup }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        onLogin({ email, password });
     }
 
     function handleChangeEmail(e) {
@@ -84,8 +85,9 @@ function Login({ isOpen, onClose, onChangePopup }) {
             placeholder="Введите почту" 
             minLength="2"
             required
+            disabled={isFormFieldsBlocked}
             />
-            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`} id="name-error">
+            <span className={`popup__input-error ${errorEmail.error ? "popup__input-error_active" : ""}`}>
                 {errorEmail.errorText}
             </span>
         </label>
@@ -101,12 +103,13 @@ function Login({ isOpen, onClose, onChangePopup }) {
             placeholder="Введите пароль"
             minLength="6"
             required
+            disabled={isFormFieldsBlocked}
             />
-            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`} id="job-error">
+            <span className={`popup__input-error ${errorPassword.error ? "popup__input-error_active" : ""}`}>
                 {errorPassword.errorText}
             </span>
         </label>
-        <span className="popup__form-error">Неправильная почта или пароль</span>
+        <span className={`popup__form-error ${showErrorForm.isShow ? "popup__form-error_active" : ""}`}>{showErrorForm.errText}</span>
         </PopupWithForm>
     )
 }
